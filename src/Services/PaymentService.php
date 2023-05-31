@@ -349,7 +349,7 @@ class PaymentService
         // Send the payment type to Novalnet server
         $paymentRequestData['transaction']['payment_type'] = $this->getPaymentType($paymentKey);
         // Send due date to the Novalnet server if it configured
-        if(in_array($paymentKey, ['NOVALNET_INVOICE', 'NOVALNET_PREPAYMENT', 'NOVALNETS_CASHPAYMENT'])) {
+        if(in_array($paymentKey, ['NOVALNET_INVOICE', 'NOVALNET_PREPAYMENT', 'NOVALNET_CASHPAYMENT'])) {
             $dueDate = $this->settingsService->getPaymentSettingsValue('due_date', strtolower($paymentKey));
             if(is_numeric($dueDate)) {
                 $paymentRequestData['transaction']['due_date'] = $this->paymentHelper->dateFormatter($dueDate);                
